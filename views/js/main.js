@@ -500,11 +500,17 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-
-  var items = document.querySelectorAll('.mover');
+//Uses getElementsByClassName instead of querySelectorAll
+//Takes var definitions outside of for loop 
+  var items = document.getElementsByClassName('.mover');
+  var scrollPosition = document.body.scrollTop / 1250;
+  var phase = [];
+//Takes the call to Math.sin() out of the main for loop and only call it 5 times
+  for (var j = 0; j < 5; j++) {
+    phase.push(Math.sin(scrollPosition + i));
+  }
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.left = items[i].basicLeft + 100 * phase[i % 5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -524,6 +530,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+//There are only a handful of pizzas that show up on the screen at any given scroll. The amount of 200 seems too many. 
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';

@@ -527,11 +527,12 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
+// Only creates visible pizzas
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
 //There are only a handful of pizzas that show up on the screen at any given scroll. The amount of 200 seems too many. 
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";

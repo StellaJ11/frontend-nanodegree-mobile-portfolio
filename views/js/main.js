@@ -507,7 +507,7 @@ function updatePositions() {
   var phase = [];
 //Takes the call to Math.sin() out of the main for loop and only call it 5 times
   for (var j = 0; j < 5; j++) {
-    phase.push(Math.sin(scrollPosition + i));
+    phase.push(Math.sin(scrollPosition + j));
   }
   for (var i = 0; i < items.length; i++) {
     items[i].style.left = items[i].basicLeft + 100 * phase[i % 5] + 'px';

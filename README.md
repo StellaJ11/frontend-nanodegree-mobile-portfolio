@@ -44,11 +44,13 @@ The project is focused on performance, both website performance optimization and
 
 
 
-### pizza.html
+### main.js
 
 - Removed queries and constants from for loops in updatePosition and changePizzaSize functions 
 - Use document.getElementByClass instead of document.querySelectorAll to access DOM more efficiently
 - Reduce the amount of sliding pizzas when the page loads from 200 to 24 
+- Remove document.querySelector("#movingPizzas1") out of for loop and replace querySelector with getElementById
+- Move document.getElementById("randomPizzas") out of for loop and define it once before the loop
 
 
 

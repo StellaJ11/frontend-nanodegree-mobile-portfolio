@@ -54,7 +54,7 @@ The project is focused on performance, both website performance optimization and
 - Move document.querySelector("#movingPizzas1") out of for loop
 - Move document.getElementById("randomPizzas") out of for loop 
 - Move determineDx function out of the for loop
-
+- Calculate the number of pizzas responsively based on the height and width of the screen 
 
 
 

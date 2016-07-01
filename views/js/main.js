@@ -468,8 +468,9 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+// Move document.getElementById("randomPizzas") out of for loop and define it once before the loop
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -502,7 +503,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 //Uses getElementsByClassName instead of querySelectorAll
 //Takes var definitions outside of for loop 
-  var items = document.getElementsByClassName('.mover');
+  var items = document.getElementsByClassName('mover');
   var scrollPosition = document.body.scrollTop / 1250;
   var phase = [];
 //Takes the call to Math.sin() out of the main for loop and only call it 5 times
@@ -532,6 +533,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
 //There are only a handful of pizzas that show up on the screen at any given scroll. The amount of 200 seems too many. 
+//Remove document.querySelector("#movingPizzas1") out of for loop and replace querySelector with getElementById
+  var movingPizzas = document.getElementById("#movingPizzas1");
   for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
@@ -540,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem)
   }
   updatePositions();
 });

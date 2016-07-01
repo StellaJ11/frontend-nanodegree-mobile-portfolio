@@ -41,6 +41,7 @@ The project is focused on performance, both website performance optimization and
 - Optimize images using Grunt
 - Resize pizzeria.jpg via making it smaller by 75% from original size of 1024 * 768 to new size of 256 * 192
 - Minify index.html 
+- Format index.html with good indentation
 
 
 

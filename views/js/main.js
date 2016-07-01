@@ -448,11 +448,13 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
+  // Use getElementsByClassName instead of querySelectorAll
+  // Move determineDx function out of the for loop
   function changePizzaSizes(size) {
-    var c = document.getElementsByClassName("randomPizzaContainer");
-    var newWidth = (sizeSwitcher(size) * 1170) + 'px';
-    for (var i = 0; i < c.length; i++) {
-      c[i].style.width = newWidth;
+    var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[i], size);
+    for (var i = 0; i < document.getElementsByClassName("randomPizzaContainer").length; i++) {
+      var newwidth = (document.getElementsByClassName("randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+      document.getElementsByClassName("randomPizzaContainer")[i].style.width = newwidth;
     }
   }
 
@@ -533,7 +535,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
 //There are only a handful of pizzas that show up on the screen at any given scroll. The amount of 200 seems too many. 
-//Remove document.querySelector("#movingPizzas1") out of for loop and replace querySelector with getElementById
+//Move document.querySelector("#movingPizzas1") out of for loop and replace querySelector with getElementById
   var movingPizzas = document.getElementById("#movingPizzas1");
   for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');

@@ -451,9 +451,9 @@ var resizePizzas = function(size) {
   // Use getElementsByClassName instead of querySelectorAll
   // Move determineDx function out of the for loop
   function changePizzaSizes(size) {
-    var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[i], size);
+    var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[0], size);
+    var newwidth = (document.getElementsByClassName("randomPizzaContainer")[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < document.getElementsByClassName("randomPizzaContainer").length; i++) {
-      var newwidth = (document.getElementsByClassName("randomPizzaContainer")[i].offsetWidth + dx) + 'px';
       document.getElementsByClassName("randomPizzaContainer")[i].style.width = newwidth;
     }
   }
@@ -544,7 +544,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cols = pizzaColumns;
 //There are only a handful of pizzas that show up on the screen at any given scroll. The amount of 200 seems too many. 
 //Move document.querySelector("#movingPizzas1") out of for loop and replace querySelector with getElementById
-  var movingPizzas = document.getElementById("#movingPizzas1");
+  var movingPizzas = document.getElementById("movingPizzas1");
   for (var i = 0; i < numberOfPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
@@ -553,7 +553,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    movingPizzas.appendChild(elem)
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
